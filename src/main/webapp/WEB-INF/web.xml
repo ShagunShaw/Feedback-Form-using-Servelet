@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 	<display-name>feedback_app</display-name>
+	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
@@ -11,4 +12,64 @@
 		<welcome-file>default.jsp</welcome-file>
 		<welcome-file>default.xhtml</welcome-file>
 	</welcome-file-list>
+	
+	
+	
+	<!-- Creating global parameters. These parameters are application-wide, so they can be accessed in any servlet (.java file) of my application via ServletContext.getInitParameter("param-name") -->
+	<context-param>			<!-- 1st parameter -->
+		<param-name>app_name</param-name>
+		<param-value>FeedbackAPP</param-value>
+	</context-param>
+	
+	<context-param>			<!-- 2nd parameter -->
+		<param-name>app_creater</param-name>
+		<param-value>Da Vinci</param-value>
+	</context-param>
+	
+	
+	
+	<!-- Creating local parameters of each servlet -->
+	
+	<!-- Mapping the url of 'Http_request1Servlet.java' servlet here -->
+	<servlet>
+		<servlet-name>Http Servlet 1</servlet-name>
+		<servlet-class>feedback_app.session.manage.Http_request1Servlet</servlet-class>
+		
+		<init-param>	<!-- Like this we can set local parameters of each servlet,  which can be accessed via 'getServletConfig().getInitParameter("param-name")' in that particular servlet only. -->
+			<param-name>Key1</param-name>
+			<param-value>Value1</param-value>
+		</init-param>
+		
+		<init-param>	<!-- Like this we can set multiple local parameters for a servlet -->
+	        <param-name>Key2</param-name>
+	        <param-value>Value2</param-value>
+	    </init-param>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>Http Servlet 1</servlet-name>
+		<url-pattern>/httpServlet1</url-pattern>
+	</servlet-mapping>
+	
+	
+	<!-- Mapping the url of 'Http_request2Servlet.java' servlet here -->
+	<servlet>
+		<servlet-name>Http Servlet 2</servlet-name>
+		<servlet-class>feedback_app.session.manage.Http_request2Servlet</servlet-class>
+		
+		<init-param>
+			<param-name>Key3</param-name>
+			<param-value>Value3</param-value>
+		</init-param>
+		
+		<init-param>
+	        <param-name>Key4</param-name>
+	        <param-value>Value4</param-value>
+	    </init-param>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>Http Servlet 2</servlet-name>
+		<url-pattern>/httpServlet2</url-pattern>
+	</servlet-mapping>
 </web-app>
