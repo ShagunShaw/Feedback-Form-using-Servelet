@@ -1,0 +1,1 @@
+<script src="<%= application.getContextPath() %>/js_folder/script.js"></script>
