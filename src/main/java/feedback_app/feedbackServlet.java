@@ -19,8 +19,10 @@ public class feedbackServlet extends HttpServlet {
     /* Getting values of url, user and password from my .env file. Before this we need to configure our
 	   'dotenv-java-3.0.0.jar' file in our 'feedback_app/src/main/webapp/WEB-INF/lib' folder.   */
 	
-	 private static final Dotenv dotenv = Dotenv.load(); // loads .env file from project root
-
+	 private static final Dotenv dotenv = Dotenv.configure()
+			 									.directory("F:\\Spring (Java)\\feedback_app")
+			 									.load(); 			// loads .env file from the specified path
+	 
 	 private static final String URL = dotenv.get("DB_URL");
 	 private static final String USER = dotenv.get("DB_USER");
 	 private static final String PASSWORD = dotenv.get("DB_PASSWORD");
